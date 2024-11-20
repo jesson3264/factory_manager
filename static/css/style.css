@@ -1,0 +1,10 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('{% static "images/background.jpg" %}') no-repeat center center fixed; /* 需要一个背景图片 */
+    background-size: cover;
+}
+
+.navbar {
+    background-color: #fff; /* 可根据品牌色调整 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

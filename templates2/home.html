@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+主页
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell">
+                <div class="mdc-card">
+                    <div class="mdc-card__primary-action">
+                        <div class="mdc-card__media mdc-card__media--16-9"
+                            style="background-image: url('{% static 'images/1.jpg' %}');"></div>
+                        <div class="mdc-card__ripple"></div>
+                        <div class="mdc-card__content">
+                            <h2 class="mdc-typography mdc-typography--headline6">欢迎来到智创未来</h2>
+                            <p class="mdc-typography mdc-typography--body2">这里是一些介绍性的文本或者新闻更新。</p>
+                        </div>
+                    </div>
+                    <div class="mdc-card__actions">
+                        <div class="mdc-card__action-buttons">
+                            <button class="mdc-button mdc-card__action mdc-card__action--button">了解更多</button>
+                            <button class="mdc-button mdc-card__action mdc-card__action--button">其他操作</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}个人资料{% endblock %}
+{% block nav_home_active %}active{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                {% if user.is_authenticated %}
+                <!-- 个人信息卡片 -->
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">个人信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!-- 头像区域 -->
+                        <div class="profile-header">
+                            {% if profile.avatar %}
+                                <img src="{{ profile.avatar.url }}" alt="User Avatar" width="100" height="100">
+                            {% else %}
+                                <img src="{% static 'images/120.png' %}" alt="Profile Picture">
+                            {% endif %}
+                          
+                        </div>
+            
+                        <!-- 个人信息显示区域 -->
+                        <div class="profile-info">
+                          <p><strong>姓名：</strong>{{ user.username }}</p>
+                          <p><strong>性别：</strong>{{user.get_staff_gender}}</p>
+                          
+                          <p><strong>年龄：</strong>{{user.get_staff_age}}岁</p>
+                          
+                          
+                          <p><strong>民族：</strong>{{user.get_staff_nationality}}</p>
+                          <p><strong>籍贯：</strong>{{user.get_staff_home}}</p>
+                          <p><strong>入职时间：</strong>{{user.get_start_time}}</p>
+                          <p><strong>电话：</strong>{{user.get_staff_tel}}</p>
+                          <p><strong>身份证：</strong>{{user.get_id_card}}</p>
+                          <p><strong>时薪：</strong>{{user.get_salary_pre_hour}}元/小时</p>
+                          <p><strong>上一次登录的时间：</strong>{{ user.last_login|date:"Y-m-d H:i:s" }}</p>
+                          <p><strong><a href="{% url 'change_password' %}">修改密码</a></strong></p>
+                          
+                          <!-- <p><strong>职位：</strong>前端开发工程师</p>
+                          <p><strong>邮箱：</strong><a href="mailto:zhangsan@example.com">zhangsan@example.com</a></p>
+                          <p><strong>个人简介：</strong>热爱编程，善于前端技术，致力于创造流畅的用户体验。</p> -->
+                        </div>
+                    </div>
+                </div>
+                
+                    <!-- <h2>姓名：{{ user.username }}</h2>
+                    <ul>
+                        <li>职位：{{user.get_staff_type}}</li>
+                        <li>性别：{{user.get_staff_gender}}</li>
+                        <li>年龄：{{user.get_staff_age}}岁</li>
+                         <li>民族：{{user.get_staff_nationality}}</li>
+                        <li>籍贯：{{user.get_staff_home}}</li>
+                        <li>入职时间：{{user.get_start_time}}</li>
+                        <li>电话：{{user.get_staff_tel}}</li>
+                        <li>身份证：{{user.get_id_card}}</li>
+                        <li>时薪：{{user.get_salary_pre_hour}}元/小时</li>
+                        <li>上一次登录的时间：{{ user.last_login|date:"Y-m-d H:i:s" }}</li>
+                        <li><a href="{% url 'change_password' %}">修改密码</a></li>
+                    </ul> -->
+                    
+                    
+                {% else %}
+                    <span>未登录，跳转到首页...</span>
+                    <script type="text/javascript">
+                        window.location.href = '/';
+                    </script>
+                {% endif %}
+            </div>
+        </div>
+    </div>    
+{% endblock %}
